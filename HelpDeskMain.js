@@ -5,7 +5,7 @@ var googleAuth = require('google-auth-library');
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/admin-directory_v1-nodejs-quickstart.json
-var SCOPES = ['https://www.googleapis.com/auth/admin.directory.orgunit'];
+var SCOPES = ['https://www.googleapis.com/auth/admin.directory.device.chromeos'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
     process.env.USERPROFILE) + '/.credentials/';
 var TOKEN_PATH = TOKEN_DIR + 'admin-directory_v1-nodejs-quickstart.json';
@@ -102,15 +102,16 @@ function storeToken(token) {
  */
 function listUsers(auth) {
   var service = google.admin('directory_v1');
-  service.orgunits.list({
+  //service.users.list({
+  service.devices.chromeos.list({
 	auth: auth,
     customerId: 'my_customer'
   }, function(err, response) {
     if (err) {
       console.log('The API returned an error: ' + err);
     }
-    var orgUnits = response.organizationUnits;
-    console.log(response.json);
+   // var chromeosdevices = response.chromeosdevices;
+    //console.log(response.json);
     //console.log(users.length);
   });
 }
