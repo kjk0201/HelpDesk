@@ -103,7 +103,7 @@ function storeToken(token) {
 function listUsers(auth) {
   var service = google.admin('directory_v1');
   //service.users.list({
-  service.devices.chromeos.list({
+  service.chromeosdevices.list({
 	auth: auth,
     customerId: 'my_customer'
   }, function(err, response) {
